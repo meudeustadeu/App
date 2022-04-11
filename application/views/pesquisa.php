@@ -23,7 +23,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href=<?php echo site_url('Welcome/index') ?>>Dashboard<span class="sr-only">(página atual)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href=<?php echo site_url('Welcome/cadastro') ?>>+ Cadastrar</a>
                     </li>
                     <li class="nav-item active">
@@ -43,44 +43,19 @@
         </h3>
     </div>
 </header>
-    <main class="container">
-
-        <form action="<?php echo site_url('Welcome/pesquisar') ?> "method="post" id="busca">
-            <div class="row cadastro2">
-                <div class="col-sm-3">
-                    <label for="busca">Marca</label>
-                    <input method="post" type="text" class="form-control" name="busca" id="busca">
-                </div>
-            </div>
-        </form>
-                <!-- <div class="col-sm-3">
-                    <label for="inputEmail4">Modelo</label>
-                    <input type="text" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Cor</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Ano</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div> -->
-            </div>
-    
-            <!-- <button type="submit" action=""welcome/pesquisar" class="btn btn-primary mt-3 botao ">Buscar</button> -->
-        
+    <main>
         <table class="container table table-hover cadastro3">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Ano</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
 
                 <?php foreach ($listagem as $list) { ?>
                     <tr>
@@ -98,54 +73,10 @@
                             </a>
                         </td>
                 <?php } ?>
-
             </tbody>
         </table>
-
-
-
-        <script>
-            function deletar(id) {
-                Swal.fire({
-                    title: 'Deseja realmante excluir esse registro?',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Sim, excluir',
-                    denyButtonText: 'Não',
-                    confirmButtonColor: "#28a745", 
-                    footer: "Observação: Esta ação não pode ser desfeita.",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            type: "POST",
-                            url: "<?php echo site_url("Welcome/deletar") ?>",
-                            data: {  id: id},
-                            dataType: 'json',
-                            success: function(data) {
-                                if (data.error == 0) {
-                                    Swal.fire({
-                                        title: 'Sucesso!',
-                                        text: 'Dados gravados com sucesso!',
-                                        type:'success',
-                                    }).then((result)=>{
-                                        location.reload();
-                                    });              
-                                } else {
-                                    Swal.fire(data.msg_error, '', 'success');
-                                }
-                            },
-                            error: function(data) {
-                                Swal.fire(data.msg, 'success')
-                            }
-                        });
-                        
-                    } else if (result.isDenied) {
-                        Swal.fire('Nenhuma alteração foi feita.', '', 'info')
-                    }
-                })
-            }
-        </script>
     </main>
+
     <script type="text/javascript" src="<?= base_url() ?>assets/js/functions.js"></script>
     <iframe style="display:none;" name="contato" src="lista.php"></iframe>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
