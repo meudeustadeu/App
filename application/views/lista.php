@@ -47,9 +47,20 @@
 
         <form action="<?php echo site_url('Welcome/pesquisar') ?> "method="post" id="busca">
             <div class="row cadastro2">
+                <div class="form-group col-md-4">
+                    <label for="marca">Marca</label>
+                    <select id="marca" name="marca" class="form-control">
+                        <option>
+                            <?php foreach($marcas as $marca){ ?>
+                                <option value="<?= $marca->id?>"> <?= $marca->id ?> </option>
+                            <?php } ?>
+                        </option>
+                    </select>
+                </div>
+                
                 <div class="col-sm-3">
-                    <label for="busca">Marca</label>
-                    <input method="post" type="text" class="form-control" name="busca" id="busca">
+                    <label for="busca">Modelo</label>
+                    <input method="post" type="text" class="form-control" name="busca" id="busca" placeholder="Busque pelo modelo">
                 </div>
             </div>
         </form>
@@ -68,7 +79,7 @@
             </div>
     
             <!-- <button type="submit" action=""welcome/pesquisar" class="btn btn-primary mt-3 botao ">Buscar</button> -->
-        
+     
         <table class="container table table-hover cadastro3">
             <thead>
                 <tr>

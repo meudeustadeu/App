@@ -8,22 +8,20 @@ class Welcome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("carros_model", '', TRUE);
+		$this->load->model("busca_model", '', TRUE);
 	}
 
 
 	public function gravar()
 	{
 		$info = $this->input->post();
-	
 		$id=$this->carros_model->gravar($info);
-		return $id;
+		// return $id;
+
 	}
-
-
 
 	public function index()
 	{
-
 		$this->load->view('dashboard');
 	}
 
@@ -43,14 +41,13 @@ class Welcome extends CI_Controller
 			$data['listagem'] = $this->carros_model->listar();
 		}
 		$this->load->view('lista', $data);
-		$this->load->model("busca_model", '', TRUE);
+
 	}
 
 
 	public function deletar()
 	{
 		$post = $this->input->post();
-		$this->load->model("busca_model", '', TRUE);
 		$retorno = $this->carros_model->deletar($post);
 
 		// passos: enviar para a model para fazer a exclusão
@@ -65,15 +62,29 @@ class Welcome extends CI_Controller
 		echo json_encode($dados);
 	}
 
+	
+	public function edit($id)
+	{
+		$data["carro"] = $this->carros_model->show($id);
+		// print_r($data);
+		// exit();
+		$this->load->view("formulario");
+	}
+	
 	public function pesquisar()
 	{
-		$this->load->model("carros_model", '', TRUE);
-		$this->load->model("busca_model");
-		$this->load->view('pesquisa');
-		$busca["listagem"] = $this->busca_model->buscar($_POST);
-	
+		
+		$data["resultado"] = $this->busca_model->buscar($this->input->post());
+		$data["contagem"] = count($data["resultado"]);
+		$data["filtro"] = $this->input->post();
+		$this->load->view('pesquisa', $data);
+		
 	}
 
-		
+	public function listar_marcas()
+	{
+		$data["marcas"] = $this->carros_model->listmarcas();
+		$this->load->view('lista', $data);
+	}
 }
 

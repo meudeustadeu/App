@@ -8,7 +8,7 @@ class Carros_model extends CI_Model{
 		return $this->db
 			->where("deletado", 0)
 			->get("lista_carros")->result_array();
-		//$this->db->where("deletado","1");
+	
 	}
 
 	public function gravar($info){
@@ -21,7 +21,30 @@ class Carros_model extends CI_Model{
 		$this->db->set("deletado", "1");
 		$this->db->where("id", $dados['id']);
 		return $this->db->update("lista_carros");	
+	}
 
+	
+
+	public function show($id)
+	{
+		return $this->db->get_where("lista_carros", array(
+			"id"=>$id
+		))->row_array();
+	}
+	
+	public function buscar($busca)
+    {
+        if(empty($busca)) {
+            return array();
+        }
+        $busca = $this->input->post("busca");
+        $this->db->like("marca", $busca);
+        return $this->db->get("lista_carros")->result_array();
+    }
+
+	public function listmarcas()
+	{
+		return $this->db->get('marca')->result_array();
 	}
 
 }

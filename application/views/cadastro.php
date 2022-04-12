@@ -45,7 +45,7 @@
         </div>
     </header>
     <main class="container cadastro">
-        <form id="gravarid" method="post" target="contato" action="<?php site_url("welcome/gravar") ?>gravar" class="container">
+        <form id="gravarid"  target="contato"  class="container">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputEmail4">Marca</label>
@@ -59,7 +59,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputCity">Ano</label>
-                    <input type="number" name="ano" class="form-control" id="inputCity" placeholder="1999">
+                    <input type="text" name="ano" class="form-control" id="inputCity" placeholder="1999">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputEstado">Cor</label>
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <button type="submit" onclick="gravar()" class="btn btn-primary">Gravar</button>
+            <button type="button" onclick="gravar()" class="btn btn-primary">Gravar</button>
         </form>
 
         <script>

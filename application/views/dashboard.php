@@ -59,9 +59,7 @@
                             <p class="card-text">
                                 <?php
                                 $row = $this->db->select("*")->limit(1)->order_by('id', "DESC")->get("lista_carros")->row();
-                                echo $row->marca;
-                                echo $row->modelo;
-                                echo $row->ano 
+                                echo $row->marca." ". $row->modelo." ". $row->ano;
                                 ?>
                             </p>
                         </div>
