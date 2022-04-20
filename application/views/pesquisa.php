@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/index') ?>>Dashboard<span class="sr-only">(página atual)</span></a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/index') ?>"> <i class="fa-solid fa-house-chimney"></i> Dashboard</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/cadastro') ?>>+ Cadastrar</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/cadastro') ?>"><i class="fa-solid fa-plus"></i> Cadastrar</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/lista') ?>>Lista</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/lista') ?>"><i class="fa-solid fa-paste"></i> Lista</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -65,18 +65,18 @@
 
                 <?php foreach ($resultado as $list) { ?>
                     <tr>
-                        <th scope="row"><?= $list['id'] ?></th>
+                        <th scope="row"><?= $list['veiculo_id'] ?></th>
                         <td><?= $list['descricao'] ?></td>
                         <td><?= $list['modelo'] ?></td>
                         <td><?= $list['cor'] ?></td>
                         <td><?= $list['ano'] ?></td>
                         <td>
-                            <a type="button" class="btn btn-primary btn-sm">
+                        <a type="button" href="<?php echo site_url("Welcome/edit/").$list['veiculo_id'] ?>" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-pencil"></i>
-                            </a>
-                            <a onclick="deletar(<?= $list['id'] ?>)" type="button" class="btn btn-danger btn-sm">
+                        </a>
+                            <button onclick="deletar(<?= $list['veiculo_id'] ?>)" type="button" class="btn btn-danger btn-sm">
                                 <i class="fa-solid fa-trash"></i>
-                            </a>
+                            </button>
                         </td>
                 <?php } ?>
             </tbody>

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="http://localhost/ListaCarros\App\assets\css\estilo.css">
+    <script src="https://kit.fontawesome.com/860c734d0d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -21,13 +22,16 @@
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/index') ?>>Dashboard<span class="sr-only">(página atual)</span></a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/index') ?>"> <i class="fa-solid fa-house-chimney"></i> Dashboard
+                       </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/cadastro') ?>>+ Cadastrar</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/cadastro') ?>"><i class="fa-solid fa-plus"></i> Cadastrar
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/lista') ?>>Lista</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/lista') ?>"><i class="fa-solid fa-paste"></i> Lista
+                    </a>                    
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -44,9 +48,9 @@
             </h3>
         </div>
     </header>
-    
+
     <main class="container cadastro">
-        <form id="gravarid"  target="contato"  class="container">
+        <form id="gravarid"  target="contato"  class="container" method="post">
             <div class="form-row">
                 <div class="form-group col-md-4">
                         <label for="marca">Marca</label>
@@ -83,7 +87,8 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary">Gravar</button>
+            <button type="button" onclick="gravar()" class="btn btn-success"> 
+            <i class="fa-solid fa-circle-check"></i> Gravar</button>
         </form>
 
         <script>

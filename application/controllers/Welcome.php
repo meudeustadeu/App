@@ -12,11 +12,12 @@ class Welcome extends CI_Controller
 
 
 	public function gravar()
-	{
+	{	
 		$info = $this->input->post();
+	
 		$id=$this->carros_model->gravar($info);
-		// return $id;
-
+		return $id;
+		
 	}
 
 	public function index()

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,7 @@
 </head>
 
 <body>
-<header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5 rounded">
             <a class="navbar-brand" href="#">Carros</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
@@ -21,13 +22,14 @@
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/index') ?>>Dashboard<span class="sr-only">(página atual)</span></a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/index') ?>"> <i class="fa-solid fa-house-chimney"></i> Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/cadastro') ?>>+ Cadastrar</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/cadastro') ?>"><i class="fa-solid fa-plus"></i> Cadastrar</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=<?php echo site_url('Welcome/lista') ?>>Lista</a>
+                    <a class="nav-link" href="<?php echo site_url('Welcome/lista') ?>"><i class="fa-solid fa-paste"></i> Lista
+                    </a>             
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -37,59 +39,69 @@
             </div>
         </nav>
         <div class="texto2">
-        <h3>
-            Edição de cadastro
-            <small class="text-muted texto">Faça aqui a alteração dos registros cadastrados</small>
-        </h3>
-    </div>
-</header>
+            <h3>
+                Edição de cadastro
+                <small class="text-muted texto">Faça aqui a alteração dos registros cadastrados</small>
+            </h3>
+        </div>
+    </header>
     <main class="container">
 
         <div class="col-md-12">
-            
-        <form id="gravarid" target="contato"  class="container" method="post">
-            <input type="hidden" name="id_carro" value="<?= $edicao['id'] ?>">
-            <div class="form-row">
-                <div class="form-group col-md-4">
+
+            <form id="gravarid" target="contato" class="container" method="post">
+                <input type="hidden" name="id_carro" value="<?= $edicao['id'] ?>">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
                         <label for="marca">Marca</label>
                         <select id="marca_id" name="marca_id" class="form-control" placeholder="Selecione uma marca">
                             <option>
-                                <?php foreach($marcas as $marca): ?>
-                                    <option value="<?= $marca['id']?>" <?= $edicao['marca_id'] == $marca['id'] ? 'selected' : '' ?>><?= $marca['descricao']?> </option>
-                                <?php endforeach; ?>
-                            </option>
+                                <?php foreach ($marcas as $marca) : ?>
+                            <option value="<?= $marca['id'] ?>" <?= $edicao['marca_id'] == $marca['id'] ? 'selected' : '' ?>><?= $marca['descricao'] ?> </option>
+                        <?php endforeach; ?>
+                        </option>
                         </select>
                     </div>
-                <div class="form-group col-md-4">
-                    <label for="inputPassword4">Modelo</label>
-                    <input type="text" class="form-control" name="modelo" id="inputmodelo" placeholder="Ex: Cruze, Onix" 
-                    value="<?= $edicao['modelo'] ?>">
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Modelo</label>
+                        <input type="text" class="form-control" name="modelo" id="inputmodelo" placeholder="Ex: Cruze, Onix" value="<?= $edicao['modelo'] ?>">
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="inputCity">Ano</label>
-                    <input type="text" name="ano" class="form-control" id="inputano" placeholder="1999" value="<?= $edicao["ano"]?>" >
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputCity">Ano</label>
+                        <input type="text" name="ano" class="form-control" id="inputano" placeholder="1999" value="<?= $edicao["ano"] ?>">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputEstado">Cor</label>
+                        <select id="inputcor" name="cor" class="form-control">
+                            <option>Escolher...</option>
+                            <option <?= $edicao['cor'] === 'Vermelho' ? 'selected' : '' ?>>Vermelho</option>
+                            <option <?= $edicao['cor'] === 'Verde' ? 'selected' : '' ?>>Verde</option>
+                            <option <?= $edicao['cor'] === 'Azul' ? 'selected' : '' ?>>Azul</option>
+                            <option <?= $edicao['cor'] === 'Prata' ? 'selected' : '' ?>>Prata</option>
+                            <option <?= $edicao['cor'] === 'Branco' ? 'selected' : '' ?>>Branco</option>
+                            <option <?= $edicao['cor'] === 'Preto' ? 'selected' : '' ?>>Preto</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="inputEstado">Cor</label>
-                    <select id="inputcor" name="cor" class="form-control">
-                        <option>Escolher...</option>
-                        <option <?= $edicao['cor'] === 'Vermelho' ? 'selected' : '' ?>>Vermelho</option>
-                        <option <?= $edicao['cor'] === 'Verde' ? 'selected' : '' ?>>Verde</option>
-                        <option <?= $edicao['cor'] === 'Azul' ? 'selected' : '' ?>>Azul</option>
-                        <option <?= $edicao['cor'] === 'Prata' ? 'selected' : '' ?>>Prata</option>
-                        <option <?= $edicao['cor'] === 'Branco' ? 'selected' : '' ?>>Branco</option>
-                        <option <?= $edicao['cor'] === 'Preto' ? 'selected' : '' ?>>Preto</option>
-                    </select>
-                </div>
-            </div>
 
-            <button type="submit" class="btn btn-primary" onclick="update();">Gravar</button>
-        </form>
+              
+                
+
+                <button  class="btn btn-success " onclick="update(), modal();">Gravar
+                <i class="fa-solid fa-circle-check"></i>
+                </button>
+
+
+                <button  class="btn btn-warning text-light" onclick="redirect();">Voltar 
+                <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </form>
+            
 
     </main>
-    
+
     <script type="text/javascript" src="<?= base_url() ?>assets/js/functions.js"></script>
     <iframe style="display:none;" name="contato" src="lista.php"></iframe>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -98,8 +110,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
-        function update()
-        {
+        function update() {
             $.ajax({
                 type: "POST",
                 url: "<?php echo site_url("Welcome/gravar_update") ?>",
@@ -113,7 +124,28 @@
                 }
             });
         }
+
+        function modal() 
+        {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Alterações feitas com sucesso',
+                showConfirmButton: false,
+                timer: 1500,
+                
+            })
+        }
+
+        function redirect()
+        {
+            location.href=("<?php echo site_url('Welcome/lista')?>")
+        }
+
+      
     </script>
+
+
 </body>
 
 </html>

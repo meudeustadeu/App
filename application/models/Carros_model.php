@@ -12,6 +12,7 @@ class Carros_model extends CI_Model{
 	}
 
 	public function gravar($info){
+
 		$this->db->insert("veiculos", $info);
 		return $this->db->insert_id();
 	}
