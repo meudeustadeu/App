@@ -44,43 +44,50 @@
     </div>
 </header>
     <main class="container">
-        <form action="">
-
-        <form action="<?php echo site_url('Welcome/pesquisar') ?> "method="post" id="busca">
-           
-            <div class="row cadastro">
-                <div class="col-sm-3">
-                    <label for="busca">Marca</label>
-                    <input method="post" type="text" class="form-control" name="busca" id="busca" placeholder="Digite a nova marca">
-                </div>
-            </div>
-        </form>
-
 
         <div class="col-md-12">
-    
-        </div>
-                <!-- <div class="col-sm-3">
-                    <label for="inputEmail4">Modelo</label>
-                    <input type="text" class="form-control" id="inputEmail4">
+            
+        <form id="gravarid" target="contato"  class="container" method="post">
+            <input type="hidden" name="id_carro" value="<?= $edicao['id'] ?>">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                        <label for="marca">Marca</label>
+                        <select id="marca_id" name="marca_id" class="form-control" placeholder="Selecione uma marca">
+                            <option>
+                                <?php foreach($marcas as $marca): ?>
+                                    <option value="<?= $marca['id']?>" <?= $edicao['marca_id'] == $marca['id'] ? 'selected' : '' ?>><?= $marca['descricao']?> </option>
+                                <?php endforeach; ?>
+                            </option>
+                        </select>
+                    </div>
+                <div class="form-group col-md-4">
+                    <label for="inputPassword4">Modelo</label>
+                    <input type="text" class="form-control" name="modelo" id="inputmodelo" placeholder="Ex: Cruze, Onix" 
+                    value="<?= $edicao['modelo'] ?>">
                 </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Cor</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Ano</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div> -->
             </div>
-    
-            <!-- <button type="submit" action=""welcome/pesquisar" class="btn btn-primary mt-3 botao ">Buscar</button> -->
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputCity">Ano</label>
+                    <input type="text" name="ano" class="form-control" id="inputano" placeholder="1999" value="<?= $edicao["ano"]?>" >
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputEstado">Cor</label>
+                    <select id="inputcor" name="cor" class="form-control">
+                        <option>Escolher...</option>
+                        <option <?= $edicao['cor'] === 'Vermelho' ? 'selected' : '' ?>>Vermelho</option>
+                        <option <?= $edicao['cor'] === 'Verde' ? 'selected' : '' ?>>Verde</option>
+                        <option <?= $edicao['cor'] === 'Azul' ? 'selected' : '' ?>>Azul</option>
+                        <option <?= $edicao['cor'] === 'Prata' ? 'selected' : '' ?>>Prata</option>
+                        <option <?= $edicao['cor'] === 'Branco' ? 'selected' : '' ?>>Branco</option>
+                        <option <?= $edicao['cor'] === 'Preto' ? 'selected' : '' ?>>Preto</option>
+                    </select>
+                </div>
+            </div>
 
-
-
-
-
+            <button type="submit" class="btn btn-primary" onclick="update();">Gravar</button>
         </form>
+
     </main>
     
     <script type="text/javascript" src="<?= base_url() ?>assets/js/functions.js"></script>
@@ -89,6 +96,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script>
+        function update()
+        {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url("Welcome/gravar_update") ?>",
+                data: $("#gravarid").serialize(),
+                // dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

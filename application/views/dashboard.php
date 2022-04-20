@@ -47,7 +47,7 @@
                     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                         <div class="card-header">Total de cadastros</div>
                         <div class="card-body">
-                            <h5 class="card-title">Até o momento foram cadastrados <?= $this->db->count_all_results('lista_carros'); ?> carros.</h5>
+                            <h5 class="card-title">Até o momento foram cadastrados <?= $this->db->count_all_results('veiculos'); ?> carros.</h5>
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
                             <h5 class="card-title">Veja o ultimo cadastro inserido</h5>
                             <p class="card-text">
                                 <?php
-                                $row = $this->db->select("*")->limit(1)->order_by('id', "DESC")->get("lista_carros")->row();
-                                echo $row->marca." ". $row->modelo." ". $row->ano;
+                                $row = $this->db->select("*")->limit(1)->order_by('id', "DESC")->get("veiculos")->row();
+                                echo $row->marca_id." ". $row->modelo." ". $row->ano;
                                 ?>
                             </p>
                         </div>

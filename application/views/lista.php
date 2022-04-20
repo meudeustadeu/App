@@ -51,35 +51,26 @@
                     <label for="marca">Marca</label>
                     <select id="marca" name="marca" class="form-control">
                         <option>
-                            <?php foreach($marcas as $marca){ ?>
-                                <option value="<?= $marca->id?>"> <?= $marca->id ?> </option>
-                            <?php } ?>
+                            <?php foreach($marcas as $marca): ?>
+                                <option value="<?= $marca['id']?>"> <?= $marca['descricao']?> </option>
+                            <?php endforeach; ?>
                         </option>
                     </select>
                 </div>
                 
                 <div class="col-sm-3">
                     <label for="busca">Modelo</label>
-                    <input method="post" type="text" class="form-control" name="busca" id="busca" placeholder="Busque pelo modelo">
+                    <input method="post" type="text" class="form-control" name="modelo" id="busca" placeholder="Busque pelo modelo">
                 </div>
             </div>
+
+            
+            <button type="submit" action=""welcome/pesquisar" class="btn btn-primary mt-3 botao ">Buscar</button>
+     
         </form>
-                <!-- <div class="col-sm-3">
-                    <label for="inputEmail4">Modelo</label>
-                    <input type="text" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Cor</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-sm-2">
-                    <label for="inputEmail4">Ano</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div> -->
+        
             </div>
     
-            <!-- <button type="submit" action=""welcome/pesquisar" class="btn btn-primary mt-3 botao ">Buscar</button> -->
-     
         <table class="container table table-hover cadastro3">
             <thead>
                 <tr>
@@ -95,16 +86,16 @@
 
                 <?php foreach ($listagem as $list) { ?>
                     <tr>
-                        <th scope="row"><?= $list['id'] ?></th>
-                        <td><?= $list['marca'] ?></td>
+                        <th scope="row"><?= $list['veiculo_id'] ?></th>
+                        <td><?= $list['descricao'] ?></td>
                         <td><?= $list['modelo'] ?></td>
                         <td><?= $list['cor'] ?></td>
                         <td><?= $list['ano'] ?></td>
                         <td>
-                            <a type="button" class="btn btn-primary btn-sm">
+                            <a type="button" href="<?php echo site_url("Welcome/edit/").$list['veiculo_id'] ?>" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-pencil"></i>
                             </a>
-                            <a onclick="deletar(<?= $list['id'] ?>)" type="button" class="btn btn-danger btn-sm">
+                            <a onclick="deletar(<?= $list['veiculo_id'] ?>)" class="btn btn-danger btn-sm">
                                 <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>

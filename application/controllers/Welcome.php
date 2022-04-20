@@ -8,7 +8,6 @@ class Welcome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("carros_model", '', TRUE);
-		$this->load->model("busca_model", '', TRUE);
 	}
 
 
@@ -28,20 +27,20 @@ class Welcome extends CI_Controller
 
 	public function cadastro()
 	{
-		$this->load->view('cadastro');
+		$data["marcas"] = $this->carros_model->listarmarcas();
+		$this->load->view('cadastro',$data);
 	}
 
 
 	public function lista()
 	{
 		$info = $this->input->post();
-		if ($info) {
-			print_r($info);
-		} else {
-			$data['listagem'] = $this->carros_model->listar();
-		}
+		
+		$data['listagem'] = $this->carros_model->buscar($info);
+		$data["marcas"] = $this->carros_model->listarmarcas();
 		$this->load->view('lista', $data);
 
+	
 	}
 
 
@@ -63,28 +62,40 @@ class Welcome extends CI_Controller
 	}
 
 	
-	public function edit($id)
-	{
-		$data["carro"] = $this->carros_model->show($id);
-		// print_r($data);
-		// exit();
-		$this->load->view("formulario");
-	}
+
 	
 	public function pesquisar()
 	{
-		
-		$data["resultado"] = $this->busca_model->buscar($this->input->post());
+		$param = $this->input->post();
+		$data["resultado"] = $this->carros_model->buscar($param);
 		$data["contagem"] = count($data["resultado"]);
 		$data["filtro"] = $this->input->post();
 		$this->load->view('pesquisa', $data);
-		
 	}
 
-	public function listar_marcas()
+	public function edit($id)
 	{
-		$data["marcas"] = $this->carros_model->listmarcas();
-		$this->load->view('lista', $data);
+		$data["edicao"] = $this->carros_model->show($id);
+		$data["marcas"] = $this->carros_model->listarmarcas();
+		// echo '<pre>'; print_r($data['marcas']); echo '</pre>';
+		$update = $_POST;
+		
+		$this->load->view("editar", $data, $update);
+	}
+
+	public function gravar_update()
+	{
+		$post = $this->input->post();
+		
+		$arrayEdicao = [
+			'marca_id' => $post['marca_id'],
+			'cor' => $post['cor'],
+			'modelo' => $post['modelo'],
+			'ano' => $post['ano']
+		];
+
+		$this->carros_model->update($arrayEdicao, $post['id_carro']);
+
 	}
 }
 

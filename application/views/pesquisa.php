@@ -44,10 +44,10 @@
     </div>
 </header>
     <main class="container">
-        <p>
+        <p class="">
             <?php 
             if (isset($contagem)) {
-                    echo "Filtro <strong> " . $filtro['busca'] . " </strong> retornou $contagem resultado(s).";
+                    echo "Filtro <strong> " . $filtro['modelo'] . " </strong> retornou $contagem resultado(s).";
                 }?>
         </p>
         <table class="table table-hover cadastro3">
@@ -66,7 +66,7 @@
                 <?php foreach ($resultado as $list) { ?>
                     <tr>
                         <th scope="row"><?= $list['id'] ?></th>
-                        <td><?= $list['marca'] ?></td>
+                        <td><?= $list['descricao'] ?></td>
                         <td><?= $list['modelo'] ?></td>
                         <td><?= $list['cor'] ?></td>
                         <td><?= $list['ano'] ?></td>
@@ -81,6 +81,48 @@
                 <?php } ?>
             </tbody>
         </table>
+
+        <script>
+            function deletar(id) {
+                Swal.fire({
+                    title: 'Deseja realmante excluir esse registro?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Sim, excluir',
+                    denyButtonText: 'Não',
+                    confirmButtonColor: "#28a745", 
+                    footer: "Observação: Esta ação não pode ser desfeita.",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "POST",
+                            url: "<?php echo site_url("Welcome/deletar") ?>",
+                            data: {  id: id},
+                            dataType: 'json',
+                            success: function(data) {
+                                if (data.error == 0) {
+                                    Swal.fire({
+                                        title: 'Sucesso!',
+                                        text: 'Dados gravados com sucesso!',
+                                        type:'success',
+                                    }).then((result)=>{
+                                        location.reload();
+                                    });              
+                                } else {
+                                    Swal.fire(data.msg_error, '', 'success');
+                                }
+                            },
+                            error: function(data) {
+                                Swal.fire(data.msg, 'success')
+                            }
+                        });
+                        
+                    } else if (result.isDenied) {
+                        Swal.fire('Nenhuma alteração foi feita.', '', 'info')
+                    }
+                })
+            }
+        </script>
     </main>
 
     <script type="text/javascript" src="<?= base_url() ?>assets/js/functions.js"></script>

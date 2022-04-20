@@ -44,13 +44,21 @@
             </h3>
         </div>
     </header>
+    
     <main class="container cadastro">
         <form id="gravarid"  target="contato"  class="container">
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="inputEmail4">Marca</label>
-                    <input type="text" class="form-control" name="marca" id="inputEmail4" placeholder="Digite a marca">
-                </div>
+                        <label for="marca">Marca</label>
+                        <select id="marca_id" name="marca_id" class="form-control" placeholder="Selecione uma marca">
+                        <!-- <option value="" disabled selected>Selecione a marca</option>               -->
+                            <option>
+                                <?php foreach($marcas as $marca): ?>
+                                    <option value="<?= $marca['id']?>"><?= $marca['descricao']?> </option>
+                                <?php endforeach; ?>
+                            </option>
+                        </select>
+                    </div>
                 <div class="form-group col-md-4">
                     <label for="inputPassword4">Modelo</label>
                     <input type="text" class="form-control" name="modelo" id="inputPassword4" placeholder="Ex: Cruze, Onix">
@@ -75,7 +83,7 @@
                 </div>
             </div>
 
-            <button type="button" onclick="gravar()" class="btn btn-primary">Gravar</button>
+            <button type="button" class="btn btn-primary">Gravar</button>
         </form>
 
         <script>
