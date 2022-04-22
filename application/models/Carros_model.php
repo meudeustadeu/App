@@ -71,4 +71,10 @@ class Carros_model extends CI_Model{
 		return $this->db->update("veiculos", $array); // aqui eu altero tudo de uma vez, meu array todo
 		
 	}
+
+	// public function contagem_deletados()
+	// {
+	// 	$this->db->query('SELECT COUNT(deletado) FROM veiculos WHERE deletado = "1";');
+	// 	$this->db->get()->row_array();
+	// }
 }

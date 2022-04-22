@@ -37,8 +37,9 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Ex: Ford Ka 2013" aria-label="Pesquisar">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i> Pesquisar</button>
                 </form>
             </div>
         </nav>
@@ -71,6 +72,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm">
+                    <div class="card text-white bg-primary mb-3 float-right" style="max-width: 18rem;">
+                        <div class="card-header">Total de registros deletados:</div>
+                        <div class="card-body">
+                            <p class="card-title">x
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -84,33 +94,59 @@
 
 
 
-    <!-- <footer class="bg-dark container">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl">
-                    <h3>Expresso Tecnologia</h3>
-                </div>
-                <div class="col-6-xl">
-                    <a href="">Instagram</a>
-                </div>
-                <div class="col">
-                <a href="">Facebook</a>               
-                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                <a href="">Instagram</a>
-                </div>
-                <div class="col-5">
-                <a href="">Facebook</a> 
-                </div>
-                <div class="col">
-                <a href="">WhatsApp</a> 
-                </div>
-            </div>
-        </div>
-       
-    </footer> -->
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-5">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+
+    <section class="mb-4">
+      <h4>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+        repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+        eum harum corrupti dicta, aliquam sequi voluptate quas.
+      </h4>
+    </section>
+
+ 
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white link" href="https://www.expressotecnologia.com/">Expresso Tecnologia</a>
+  </div>
+
+</footer>
+
 </body>
 
 </html>
