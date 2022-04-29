@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="http://localhost/ListaCarros\App\assets\css\estilo.css">
+    <link rel="stylesheet" href="http://localhost\App\assets\css\estilo.css">
     <script src="https://kit.fontawesome.com/860c734d0d.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -55,29 +55,6 @@
                         <div class="card-header">Total de cadastros</div>
                         <div class="card-body">
                             <h5 class="card-title">Até o momento foram cadastrados <?= $this->db->count_all_results('veiculos'); ?> carros.</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-primary mb-3 float-right" style="max-width: 18rem;">
-                        <div class="card-header">Ultimo cadastro inserido</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Veja o ultimo cadastro inserido</h5>
-                            <p class="card-text">
-                                <?php
-                                $row = $this->db->select("*")->limit(1)->order_by('id', "DESC")->get("veiculos")->row();
-                                echo $row->marca_id . " " . $row->modelo . " " . $row->ano;
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-primary mb-3 float-right" style="max-width: 18rem;">
-                        <div class="card-header">Total de registros deletados:</div>
-                        <div class="card-body">
-                            <p class="card-title">x
-                            </p>
                         </div>
                     </div>
                 </div>
